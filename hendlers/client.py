@@ -18,29 +18,36 @@ async def start_message(message: types.Message):
     # if check_admin(await bot.get_chat_member(chat_id=BRON_CHANNEL, user_id=message.from_user.id)):
     # await bot.send_message(message.from_user.id, "Функции для МОДЕРАТОРА", reply_markup=button.btnAdm)
     # else:
-    await bot.send_message(message.from_user.id, 'ДОБРО ПОЖАЛОВАТЬ {0.first_name}\n'
-                                                 'Я Ваш личный бот помощник.\n'
-                                                 'Я помогу вам ознокомиться с меню, режимом работы ресторана и '
-                                                 'забронировать столик.'.format(
+    await bot.send_message(message.from_user.id, 'ДОБРО ПОЖАЛОВАТЬ, {0.first_name}\n'
+                                                 'Я Ваш личный бот, помощник.\n'
+                                                 'Я помогу Вам, ознокомиться с меню, режимом работы ресторана и '
+                                                 'забронировать стол.'.format(
         message.from_user),
                            reply_markup=button.mainMenu)
 
 
 # @dp.message_handler(commands=['🕗 Режим работы'])
 async def time_of_work(message: types.Message):
-    await bot.send_message(message.from_user.id, 'Улица Аделя Кутуя 68/2\n'
-                                                 'Пн-Чт 9:00-23:00\n'
-                                                 'Пт-Сб 9:00-00:00\n'
-                                                 'Вс 10:00-23:00')
+    await bot.send_photo(message.from_user.id, types.InputFile("/Users/mekanmededov/Desktop/bot_test/photo_2022-03-30 "
+                                                               "19.21.56.jpeg"))
+    await bot.send_message(message.from_user.id, "Адрес:\n"
+                                                 "Держинского 6 Б\n"
+                                                 "\n"
+                                                 "☎️ 2661111\n"
+                                                 "\n"
+                                                 "Ромэйн Meat\n"
+                                                 "Дзержинского, 6Б, Казань\n"
+                                                 "+7 (843) 266‒11‒11\n"
+                                                 "https://go.2gis.com/fkggv")
 
 
 # @dp.message_handler(commands=['📖 Меню'])
 async def menu(message: types.Message):
-    await bot.send_message(message.from_user.id, 'ВЫБИРАЙТЕ С УМОМ', reply_markup=button.inlineMenu)
+    await bot.send_message(message.from_user.id, "ВЫБЕРИТЕ РАЗДЕЛ", reply_markup=button.inlineMenu)
 
 
 async def bar(message: types.Message):
-    await bot.send_message(message.from_user.id, "КОТЕГОРИИ ПО БАРУ", reply_markup=button.barmenu)
+    await bot.send_message(message.from_user.id, "ВЫБЕРИТЕ РАЗДЕЛ", reply_markup=button.barmenu)
 
 
 async def back(message: types.Message):
@@ -114,14 +121,14 @@ def register_handlers_client(dp: Dispatcher):
     dp.register_message_handler(salaty, text="🥗 САЛАТЫ")
     dp.register_message_handler(supy, text="🍲 СУПЫ")
     dp.register_message_handler(det_menu, text="👶 ДЕТСКОЕ МЕНЮ")
-    dp.register_message_handler(gor_menu, text="🌶 ГОРЯЧИЕ БЛЮДА")
+    dp.register_message_handler(gor_menu, text="🥙 ГОРЯЧИЕ БЛЮДА")
     dp.register_message_handler(grill_menu, text="🥩 GRILL-СТЕЙКИ")
     dp.register_message_handler(sousy, text="🍽 СОУСА И ГОРНИРЫ")
     """Блок открытие бара"""
-    dp.register_message_handler(aperativ, text="🍷 АПЕРЕТИВ")
-    dp.register_message_handler(bel_vino, text="🍷 БЕЛЫЕ ВИНА")
+    dp.register_message_handler(aperativ, text="🍾 АПЕРЕТИВ")
+    dp.register_message_handler(bel_vino, text="🥂 БЕЛЫЕ ВИНА")
     dp.register_message_handler(kras_vino, text="🍷 КРАСНЫЕ ВИНА")
     dp.register_message_handler(viski_rom, text="🥃 ВИСКИ, РОМ, КОНЬЯК")
-    dp.register_message_handler(vodka_djin, text="🍾 ВОДКА, ДЖИН, ТЕКИЛА")
+    dp.register_message_handler(vodka_djin, text="🍸 ВОДКА, ДЖИН, ТЕКИЛА")
     dp.register_message_handler(pivo, text="🍺 ПИВО")
-    dp.register_message_handler(bez_alkogol, text="🍸 БЕЗ АЛКОГОЛЬНЫЕ НАПИТКИ")
+    dp.register_message_handler(bez_alkogol, text="☕ БЕЗ АЛКОГОЛЬНЫЕ НАПИТКИ")

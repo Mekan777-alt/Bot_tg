@@ -85,7 +85,7 @@ btndes = KeyboardButton("🍮 ДЕСЕРТЫ")
 btnbzn = KeyboardButton("🥗 САЛАТЫ")
 btnsup = KeyboardButton("🍲 СУПЫ")
 btnkids = KeyboardButton("👶 ДЕТСКОЕ МЕНЮ")
-btngor = KeyboardButton(" ГОРЯЧИЕ БЛЮДА")
+btngor = KeyboardButton("🥙 ГОРЯЧИЕ БЛЮДА")
 btngril = KeyboardButton("🥩 GRILL-СТЕЙКИ")
 btnsous = KeyboardButton("🍽 СОУСА И ГОРНИРЫ")
 btnnaz = KeyboardButton("🔙 НАЗАД")
@@ -101,13 +101,13 @@ inlineMenu = ReplyKeyboardMarkup(resize_keyboard=True).add(btnkitchen, btnbzn, b
 
 """Кнопки внутри Бара"""
 
-btnvin_po_bakal = KeyboardButton("🍷 АПЕРЕТИВ")
-btnvin_bel = KeyboardButton("🍷 БЕЛЫЕ ВИНА")
+btnvin_po_bakal = KeyboardButton("🍾 АПЕРЕТИВ")
+btnvin_bel = KeyboardButton("🥂 БЕЛЫЕ ВИНА")
 btnvin_kras = KeyboardButton("🍷 КРАСНЫЕ ВИНА")
 btnviski = KeyboardButton("🥃 ВИСКИ, РОМ, КОНЬЯК")
-btnvodka = KeyboardButton("🍾 ВОДКА, ДЖИН, ТЕКИЛА")
+btnvodka = KeyboardButton("🍸 ВОДКА, ДЖИН, ТЕКИЛА")
 btnpivo = KeyboardButton("🍺 ПИВО")
-btnbez = KeyboardButton("🍸 БЕЗ АЛКОГОЛЬНЫЕ НАПИТКИ")
+btnbez = KeyboardButton("☕ БЕЗ АЛКОГОЛЬНЫЕ НАПИТКИ")
 barmenu = ReplyKeyboardMarkup(resize_keyboard=True).add(btnvin_po_bakal, btnvin_bel, btnvin_kras, btnviski,
                                                         btnvodka, btnpivo, btnbez, btnnaz)
 
