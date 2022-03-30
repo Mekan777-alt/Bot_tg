@@ -38,7 +38,7 @@ async def load_date(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['date'] = message.text
         await FSMbron.next()
-        await message.reply('🕗 На какое время бронь?', reply_markup=button.timeBtn)
+        await message.reply('🕗 Выберите дату бронирования: ', reply_markup=button.timeBtn)
 
 
 #@dp.message_handler(text=['time'], state=FSMbron.time)
@@ -46,7 +46,7 @@ async def load_time(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['time'] = message.text
         await FSMbron.next()
-        await message.reply('👪 Сколько человек вас будет?', reply_markup=button.pepBtn)
+        await message.reply('👪 На какое количество гостей?', reply_markup=button.pepBtn)
 
 
 #@dp.message_handler(text=['people'], state=FSMbron.people)
@@ -54,7 +54,7 @@ async def load_people(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['people'] = message.text
         await FSMbron.next()
-        await message.reply('И на последок номер телефона пожалуйста.\n'
+        await message.reply('Введите номер телефона пожалуйста.\n'
                             'Хостес перезвонит вам для подтверждения брони.', reply_markup=types.ReplyKeyboardRemove())
 
 
@@ -72,7 +72,7 @@ async def cencel_message(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         if message.text == "✅ ВЕРНО":
             await message.reply("Бронь принята", reply_markup=button.mainMenu)
-            await bot.send_message(client.BRON_CHANNEL, f"Бронь:\n"
+            await bot.send_message(client.BRON_CHANNEL, f"Бронь\n"
                                             f"Ф.И.О: {data['name']}\n"
                                             f"Время: {data['people']}\n"
                                             f"Дата: {data['time']}\n"
