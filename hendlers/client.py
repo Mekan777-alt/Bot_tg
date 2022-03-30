@@ -20,16 +20,16 @@ async def start_message(message: types.Message):
     # else:
     await bot.send_message(message.from_user.id, 'ДОБРО ПОЖАЛОВАТЬ, {0.first_name}\n'
                                                  'Я Ваш личный бот, помощник.\n'
-                                                 'Я помогу Вам, ознокомиться с меню, режимом работы ресторана и '
+                                                 'Я помогу Вам, ознакомиться с меню, режимом работы ресторана и '
                                                  'забронировать стол.'.format(
         message.from_user),
                            reply_markup=button.mainMenu)
 
 
+
 # @dp.message_handler(commands=['🕗 Режим работы'])
 async def time_of_work(message: types.Message):
-    await bot.send_photo(message.from_user.id, types.InputFile("/Users/mekanmededov/Desktop/bot_test/photo_2022-03-30 "
-                                                               "19.21.56.jpeg"))
+    await bot.send_photo(message.from_user.id, types.InputFile("/home/mekan/marsel_tg_bot/Bot_tg/photo_2022-03-3019.21.56.jpeg"))
     await bot.send_message(message.from_user.id, "Адрес:\n"
                                                  "Держинского 6 Б\n"
                                                  "\n"

@@ -38,7 +38,7 @@ async def load_date(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['date'] = message.text
         await FSMbron.next()
-        await message.reply('🕗 Выберите дату бронирования: ', reply_markup=button.timeBtn)
+        await message.reply('🕗 Выберите время бронирования: ', reply_markup=button.timeBtn)
 
 
 #@dp.message_handler(text=['time'], state=FSMbron.time)
