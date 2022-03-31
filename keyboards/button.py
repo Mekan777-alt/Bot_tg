@@ -7,7 +7,7 @@ btnBrn = KeyboardButton("📞 ЗАБРОНИРОВАТЬ")
 btnTime = KeyboardButton("🕗 РЕЖИМ РАБОТЫ")
 btnbar = KeyboardButton("🍾 БАР")
 mainMenu = ReplyKeyboardMarkup(resize_keyboard=True)
-mainMenu.add(btnMenu, btnbar, btnBrn, btnTime)
+mainMenu.add(btnMenu, btnbar, btnTime, btnBrn)
 
 """Bron stolov"""
 b1 = KeyboardButton("10:00")
@@ -87,7 +87,7 @@ btnsup = KeyboardButton("🍲 СУПЫ")
 btnkids = KeyboardButton("👶 ДЕТСКОЕ МЕНЮ")
 btngor = KeyboardButton("🥙 ГОРЯЧИЕ БЛЮДА")
 btngril = KeyboardButton("🥩 GRILL-СТЕЙКИ")
-btnsous = KeyboardButton("🍽 СОУСА И ГОРНИРЫ")
+btnsous = KeyboardButton("🍽 СОУСА И ГАРНИРЫ")
 btnnaz = KeyboardButton("🔙 НАЗАД")
 inlineMenu = ReplyKeyboardMarkup(resize_keyboard=True).add(btnkitchen, btnbzn, btngril, btngor,
                                                            btnsup, btnkids, btnsous, btndes, btnnaz)

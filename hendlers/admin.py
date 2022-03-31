@@ -55,7 +55,7 @@ async def load_people(message: types.Message, state: FSMContext):
         data['people'] = message.text
         await FSMbron.next()
         await message.reply('Введите номер телефона пожалуйста.\n'
-                            'Хостес перезвонит вам для подтверждения брони.', reply_markup=types.ReplyKeyboardRemove())
+                            'Хостес перезвонит Вам для подтверждения брони.', reply_markup=types.ReplyKeyboardRemove())
 
 
 #@dp.message_handler(text=['phone_number'], state=FSMbron.phone_number)
@@ -71,7 +71,8 @@ async def load_phone_number(message: types.Message, state: FSMContext):
 async def cencel_message(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         if message.text == "✅ ВЕРНО":
-            await message.reply("Бронь принята", reply_markup=button.mainMenu)
+            await message.reply("Бронь принята\n"
+                                "Ожидайте подтверждения", reply_markup=button.mainMenu)
             await bot.send_message(client.BRON_CHANNEL, f"Бронь\n"
                                             f"Ф.И.О: {data['name']}\n"
                                             f"Время: {data['people']}\n"

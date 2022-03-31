@@ -20,7 +20,7 @@ async def start_message(message: types.Message):
     # else:
     await bot.send_message(message.from_user.id, 'ДОБРО ПОЖАЛОВАТЬ, {0.first_name}\n'
                                                  'Я Ваш личный бот, помощник.\n'
-                                                 'Я помогу Вам, ознакомиться с меню, режимом работы ресторана и '
+                                                 'Я помогу Вам ознакомиться с меню, режимом работы ресторана и '
                                                  'забронировать стол.'.format(
         message.from_user),
                            reply_markup=button.mainMenu)
@@ -123,7 +123,7 @@ def register_handlers_client(dp: Dispatcher):
     dp.register_message_handler(det_menu, text="👶 ДЕТСКОЕ МЕНЮ")
     dp.register_message_handler(gor_menu, text="🥙 ГОРЯЧИЕ БЛЮДА")
     dp.register_message_handler(grill_menu, text="🥩 GRILL-СТЕЙКИ")
-    dp.register_message_handler(sousy, text="🍽 СОУСА И ГОРНИРЫ")
+    dp.register_message_handler(sousy, text="🍽 СОУСА И ГАРНИРЫ")
     """Блок открытие бара"""
     dp.register_message_handler(aperativ, text="🍾 АПЕРЕТИВ")
     dp.register_message_handler(bel_vino, text="🥂 БЕЛЫЕ ВИНА")
