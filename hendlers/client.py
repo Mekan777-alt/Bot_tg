@@ -1,35 +1,41 @@
 from aiogram import types, Dispatcher
+
+import hendlers.admin
 from bot import bot
 from keyboards import button
 
-CHANNEL_ID = "@main_channel2"  # основной канал связи
-BRON_CHANNEL = "@test_channel123456765"  # Канал связи для отправки брони
+BRON_CHANNEL = "@main_channel2"  # Канал связи для отправки брони
+global OTN
 
 
-# def check_admin(chat_member):
-# if chat_member['status'] == 'administrator' or chat_member['status'] == 'creator':
-# return True
-# else:
-# return False
+def check_admin(chat_member):
+    if chat_member['status'] == 'administrator' or chat_member['status'] == 'creator':
+        return True
+    else:
+        return False
 
 
 # @dp.message_handler(commands=['start'])
 async def start_message(message: types.Message):
-    # if check_admin(await bot.get_chat_member(chat_id=BRON_CHANNEL, user_id=message.from_user.id)):
-    # await bot.send_message(message.from_user.id, "Функции для МОДЕРАТОРА", reply_markup=button.btnAdm)
-    # else:
-    await bot.send_message(message.from_user.id, 'ДОБРО ПОЖАЛОВАТЬ, {0.first_name}\n'
-                                                 'Я Ваш личный бот, помощник.\n'
-                                                 'Я помогу Вам ознакомиться с меню, режимом работы ресторана и '
-                                                 'забронировать стол.'.format(
-        message.from_user),
-                           reply_markup=button.mainMenu)
-
+    if check_admin(await bot.get_chat_member(chat_id=BRON_CHANNEL, user_id=message.from_user.id)):
+        await bot.send_message(message.from_user.id, "Функции для МОДЕРАТОРА", reply_markup=button.btnAdm)
+        if message.text == "❌ Остоновить брони":
+            await hendlers.admin.cmd_start(message.text)
+        elif message.text == "✅ Принимать брони":
+            await hendlers.admin.cmd_start(message.text)
+    else:
+        await bot.send_message(message.from_user.id, 'ДОБРО ПОЖАЛОВАТЬ, {0.first_name}\n'
+                                                     'Я Ваш личный бот, помощник.\n'
+                                                     'Я помогу Вам ознакомиться с меню, режимом работы ресторана и '
+                                                     'забронировать стол.'.format(
+            message.from_user),
+                               reply_markup=button.mainMenu)
 
 
 # @dp.message_handler(commands=['🕗 Режим работы'])
 async def time_of_work(message: types.Message):
-    await bot.send_photo(message.from_user.id, types.InputFile("/home/mekan/marsel_tg_bot/Bot_tg/photo_2022-03-3019.21.56.jpeg"))
+    await bot.send_photo(message.from_user.id,
+                         types.InputFile("/Users/mekanmededov/Desktop/bot_test/photo_2022-03-30 19.21.56.jpeg"))
     await bot.send_message(message.from_user.id, "Адрес:\n"
                                                  "Держинского 6 Б\n"
                                                  "\n"
@@ -55,6 +61,7 @@ async def back(message: types.Message):
 
 
 """Блок команд после открытие МЕНЮ"""
+
 
 async def gor_zak(message: types.Message):
     await bot.send_message(message.from_user.id, "https://telegra.ph/Menyu-03-26-4", reply_markup=button.inlineMenu)
@@ -86,28 +93,46 @@ async def grill_menu(message: types.Message):
 
 async def sousy(message: types.Message):
     await bot.send_message(message.from_user.id, "https://telegra.ph/MENYU-03-27-2", reply_markup=button.inlineMenu)
+
+
 """БЛОК ОТКРЫТИЯ БАРА"""
+
 
 async def aperativ(message: types.Message):
     await bot.send_message(message.from_user.id, "https://telegra.ph/BAR-03-30", reply_markup=button.barmenu)
 
+
 async def bel_vino(message: types.Message):
-    await bot.send_message(message.from_user.id, "https://telegra.ph/BAR-03-28-2#_tl_editor", reply_markup=button.barmenu)
+    await bot.send_message(message.from_user.id, "https://telegra.ph/BAR-03-28-2#_tl_editor",
+                           reply_markup=button.barmenu)
+
 
 async def kras_vino(message: types.Message):
     await bot.send_message(message.from_user.id, "https://telegra.ph/BAR-03-28-3#ВНИЗ", reply_markup=button.barmenu)
 
+
 async def viski_rom(message: types.Message):
     await bot.send_message(message.from_user.id, "https://telegra.ph/BAR-03-29-3", reply_markup=button.barmenu)
+
 
 async def vodka_djin(message: types.Message):
     await bot.send_message(message.from_user.id, "https://telegra.ph/BAR-03-29-2", reply_markup=button.barmenu)
 
+
 async def pivo(message: types.Message):
     await bot.send_message(message.from_user.id, "https://telegra.ph/BAR-03-28-4", reply_markup=button.barmenu)
 
+
 async def bez_alkogol(message: types.Message):
     await bot.send_message(message.from_user.id, "https://telegra.ph/BAR-03-29-4", reply_markup=button.barmenu)
+
+
+"""Блок кода доставки"""
+
+
+async def dilevery_menu(message: types.Message):
+    await bot.send_message(message.from_user.id, "ВЫБЕРИТЕ МЕНЮ", reply_markup=button.inlineMenu)
+
 
 def register_handlers_client(dp: Dispatcher):
     dp.register_message_handler(start_message, commands=['start', 'help'])
@@ -132,3 +157,5 @@ def register_handlers_client(dp: Dispatcher):
     dp.register_message_handler(vodka_djin, text="🍸 ВОДКА, ДЖИН, ТЕКИЛА")
     dp.register_message_handler(pivo, text="🍺 ПИВО")
     dp.register_message_handler(bez_alkogol, text="☕ БЕЗ АЛКОГОЛЬНЫЕ НАПИТКИ")
+    """Блок доставки"""
+    dp.register_message_handler(dilevery_menu, text="🎒 ДОСТАВКА")

@@ -6,8 +6,10 @@ btnMenu = KeyboardButton("📖 МЕНЮ")
 btnBrn = KeyboardButton("📞 ЗАБРОНИРОВАТЬ")
 btnTime = KeyboardButton("🕗 РЕЖИМ РАБОТЫ")
 btnbar = KeyboardButton("🍾 БАР")
+btndlv = KeyboardButton("🎒 ДОСТАВКА")
+btnkor = KeyboardButton("🗑 КОРЗИНА")
 mainMenu = ReplyKeyboardMarkup(resize_keyboard=True)
-mainMenu.add(btnMenu, btnbar, btnTime, btnBrn)
+mainMenu.add(btnMenu, btnbar, btnTime, btnBrn, btndlv, btnkor)
 
 """Bron stolov"""
 b1 = KeyboardButton("10:00")
@@ -76,6 +78,8 @@ pepBtn = ReplyKeyboardMarkup().add(b41).add(b42).add(b43).add(b44).add(b45).add(
 b51 = KeyboardButton("❌ НЕТ")
 b52 = KeyboardButton("✅ ВЕРНО")
 b53 = KeyboardButton("❌ ОТМЕНИТЬ")
+b54 = KeyboardButton("📞 Отправить свой номер", request_contact=True)
+send_phone = ReplyKeyboardMarkup(resize_keyboard=True).add(b54)
 otmBtn = ReplyKeyboardMarkup(resize_keyboard=True).add(b52).add(b51)
 nacotmBtn = ReplyKeyboardMarkup(resize_keyboard=True).add(b53)
 
@@ -94,9 +98,9 @@ inlineMenu = ReplyKeyboardMarkup(resize_keyboard=True).add(btnkitchen, btnbzn, b
 
 """для модераторов"""
 
-#btndone = KeyboardButton("✅ Принимать брони")
-#btnnot = KeyboardButton("❌ Остоновить брони")
-#btnAdm = ReplyKeyboardMarkup(resize_keyboard=True).add(btnnot, btndone)
+btndone = KeyboardButton("✅ Принимать брони")
+btnnot = KeyboardButton("❌ Остоновить брони")
+btnAdm = ReplyKeyboardMarkup(resize_keyboard=True).add(btnnot, btndone)
 
 
 """Кнопки внутри Бара"""
@@ -110,6 +114,7 @@ btnpivo = KeyboardButton("🍺 ПИВО")
 btnbez = KeyboardButton("☕ БЕЗ АЛКОГОЛЬНЫЕ НАПИТКИ")
 barmenu = ReplyKeyboardMarkup(resize_keyboard=True).add(btnvin_po_bakal, btnvin_bel, btnvin_kras, btnviski,
                                                         btnvodka, btnpivo, btnbez, btnnaz)
+"""Доставка"""
 
 
 

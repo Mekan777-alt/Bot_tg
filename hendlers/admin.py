@@ -17,8 +17,11 @@ class FSMbron(StatesGroup):
 # Начало общения с пользователем
 #@dp.message_handler(text='📞 Забронировать', state=None)
 async def cmd_start(message: types.Message):
-    await FSMbron.name.set()
-    await message.reply('👤 На чье имя бронируем стол?', reply_markup=button.nacotmBtn)
+    if message.text == "❌ Остоновить брони":
+        await bot.send_message(message.from_user.id, "Брони временно не принимаються")
+    elif message.text == "✅ Принимать брони":
+        await FSMbron.name.set()
+        await message.reply('👤 На чье имя бронируем стол?', reply_markup=button.nacotmBtn)
 
 
 #@dp.message_handler(text=['name'], state=FSMbron.name)
@@ -55,7 +58,7 @@ async def load_people(message: types.Message, state: FSMContext):
         data['people'] = message.text
         await FSMbron.next()
         await message.reply('Введите номер телефона пожалуйста.\n'
-                            'Хостес перезвонит Вам для подтверждения брони.', reply_markup=types.ReplyKeyboardRemove())
+                            'Хостес перезвонит Вам для подтверждения брони.', reply_markup=button.send_phone)
 
 
 #@dp.message_handler(text=['phone_number'], state=FSMbron.phone_number)
